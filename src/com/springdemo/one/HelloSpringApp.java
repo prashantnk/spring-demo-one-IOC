@@ -2,6 +2,9 @@ package com.springdemo.one;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.springdemo.coach.Coach;
+import com.springdemo.coach.CricketCoach;
+
 public class HelloSpringApp {
 	public static void main(String[] args) {
 		
@@ -16,10 +19,18 @@ public class HelloSpringApp {
 		Coach myBaseBallCoach = context.getBean("baseballCoach" , Coach.class);
 		Coach myGolfCoach = context.getBean("golfCoach" , Coach.class);
 		
-//		call methods on spring
+		CricketCoach myCricketCoach = context.getBean("cricketCoach" , CricketCoach.class);
+		
+//		call methods on objects created 
 		
 		System.out.println(myTrackCoach.getDailyWorkout());
 		System.out.println(myBaseBallCoach.getDailyWorkout());
+		System.out.println(myBaseBallCoach.getDailyFortune());
+		
+		
+		System.out.println(myCricketCoach.getDailyWorkout());
+		System.out.println(myCricketCoach.getDailyFortune());
+		myCricketCoach.showData();
 		System.out.println(myGolfCoach.getDailyWorkout());
 		
 //		close the context

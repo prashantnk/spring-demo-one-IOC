@@ -6,12 +6,54 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    
+    
+    
 
     <!-- Define your beans here -->
     
-    <bean id="trackCoach" class="com.springdemo.one.TrackCoach"></bean>
-    <bean id="baseballCoach" class="com.springdemo.one.BaseballCoach"></bean>
-    <bean id="golfCoach" class="com.springdemo.one.GolfCoach"></bean>
+    <!-- dependency definition -->
+    
+    <bean id="staticFortuneService" class="com.springdemo.two.HappyFortuneService"></bean>
+    <bean id="randomFortuneService" class="com.springdemo.two.RandomFortuneService"></bean>
+    
+    <bean id="trackCoach" class="com.springdemo.coach.TrackCoach"></bean>
+    <bean id="baseballCoachNoArg" class="com.springdemo.coach.BaseballCoach"></bean>
+    <bean id="golfCoach" class="com.springdemo.coach.GolfCoach"></bean>
+    
+    <!-- loading file -->
+    
+    <context:property-placeholder location="classpath:cricket.properties"/>
+    
+    
+    
+    
+    <bean id="baseballCoach" class="com.springdemo.coach.BaseballCoach">
+    <!-- Setting up constructor injection -->
+    	<constructor-arg ref="staticFortuneService"/>
+    </bean>
+    
+    
+    
+    
+    
+    
+    <bean id="cricketCoach" class="com.springdemo.coach.CricketCoach">
+    <!-- setting up setter injection -->
+    	<property name="fortuneService" ref="randomFortuneService"></property>
+    	
+    	<!-- providing values to the data members -->
+    	
+    	<property name="email" value="${cricket.email}" />
+    	<property name="teamName" value="${cricket.teamName}" />
+    	<!-- <property name="teamName" value="${app}" /> -->
+    </bean>
+    
+    
+    
+    
+    
     
 </beans>
 

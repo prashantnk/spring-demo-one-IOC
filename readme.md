@@ -1,1 +1,1 @@
-# BASIC Spring inversion of control
+# Basic Spring IOC(Inversion of control) and DI(Dependency Injection)
