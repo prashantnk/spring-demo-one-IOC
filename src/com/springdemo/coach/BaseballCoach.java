@@ -22,4 +22,15 @@ public class BaseballCoach implements Coach{
 	public String getDailyFortune() {
 		return myFortuneService.getFortune();
 	}
+//	init method
+	
+	public void myInit() {
+		System.out.println("Baseball : Init called ");
+	}
+	
+//	destroy method
+	
+	public void myDestroy(){
+		System.out.println("Baseball : Destroy called ");
+	}	
 }

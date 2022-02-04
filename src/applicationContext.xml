@@ -29,7 +29,8 @@
     
     
     
-    <bean id="baseballCoach" class="com.springdemo.coach.BaseballCoach">
+    <bean id="baseballCoach" class="com.springdemo.coach.BaseballCoach" 
+    		scope="singleton">
     <!-- Setting up constructor injection -->
     	<constructor-arg ref="staticFortuneService"/>
     </bean>
